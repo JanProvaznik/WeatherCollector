@@ -25,12 +25,11 @@ public class Requester extends TimerTask {
         }
     }
 
-    private void sendEventToBroker(WeatherEvent event) throws JMSException {
-        String message = new Gson().toJson(event);
-        MessageSender.sendStringDefault(message);
+    private static void sendEventToBroker(WeatherEvent event) throws JMSException {
+        MessageSender.sendStringDefault(weatherEventToJson(event));
     }
 
-    private WeatherEvent responseToEvent(WeatherResponse.Root response) {
+    private static WeatherEvent responseToEvent(WeatherResponse.Root response) {
         return  new WeatherEvent(
                 Instant.now().toString(),
                 new WeatherEvent.Location(response.coord.lat,response.coord.lon),
@@ -43,7 +42,7 @@ public class Requester extends TimerTask {
                 );
     }
 
-    void storeToFile(WeatherResponse.Root weatherResponse) throws IOException {
+    private static void storeToFile(WeatherResponse.Root weatherResponse) throws IOException {
         String fileName = "BarcelonaWeather";
         FileWriter fw = new FileWriter(fileName + LocalDateTime.now().getHour(), true);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -56,7 +55,7 @@ public class Requester extends TimerTask {
         bw.close();
     }
 
-    public static WeatherResponse.Root jsonToClasses(String json) {
+    private static WeatherResponse.Root jsonToClasses(String json) {
         return new Gson().fromJson(json, WeatherResponse.Root.class);
     }
 
