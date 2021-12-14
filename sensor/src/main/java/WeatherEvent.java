@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 public class WeatherEvent {
     private String ts;
     private Location location;
@@ -80,6 +82,9 @@ public class WeatherEvent {
             this.lat = lat;
             this.lon = lon;
         }
+    }
+    public String serialize(){
+          return new Gson().toJson(this);
     }
 }
 

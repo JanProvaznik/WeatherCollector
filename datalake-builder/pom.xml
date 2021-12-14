@@ -5,17 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.janpro</groupId>
-    <artifactId>WeatherCollector</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>datalake-builder</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>sensor</module>
-        <module>analytics</module>
-        <module>datalake-builder</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+    
 </project>

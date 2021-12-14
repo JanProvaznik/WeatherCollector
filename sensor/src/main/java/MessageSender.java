@@ -26,7 +26,7 @@ public class MessageSender {
                 Session.AUTO_ACKNOWLEDGE);
 
         //The queue will be created automatically on the server.
-        Destination destination = session.createQueue(subject);
+        Destination destination = session.createTopic(subject);
 
         // MessageProducer is used for sending messages to the queue.
         MessageProducer producer = session.createProducer(destination);

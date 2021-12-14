@@ -1,8 +1,24 @@
+import java.time.Instant;
+
 public class WeatherEventBuilder {
     private final WeatherEvent weatherEvent;
 
     public WeatherEventBuilder() {
         this.weatherEvent = new WeatherEvent();
+    }
+
+    public static WeatherEvent buildEventFromResponse(WeatherResponse.Root response) {
+        WeatherEventBuilder weatherEventBuilder = new WeatherEventBuilder();
+        return weatherEventBuilder
+                .timeStamp(Instant.now().toString())
+                .location(response.coord.lat, response.coord.lon)
+                .weather(response.weather.get(0).main)
+                .temperature(response.main.temp)
+                .windSpeed(response.wind.speed)
+                .windDirection(response.wind.deg)
+                .humidity(response.main.humidity)
+                .pressure(response.main.pressure)
+                .build();
     }
 
     public WeatherEventBuilder timeStamp(String ts) {
