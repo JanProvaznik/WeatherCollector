@@ -1,6 +1,11 @@
 import com.google.gson.Gson;
 
 public class WeatherEvent {
+    // todo make into Instant???
+
+    // Gson gsonSerializer = new GsonBuilder().registerTypeAdapter(Instant.class,new JsonSerializer<Instant>(){
+    // public Instant deserialize(JsonElement json, Type type, JsonDeserializationContext jdc) throws ...
+
     private String ts;
     private Location location;
     private String weather;
@@ -83,8 +88,9 @@ public class WeatherEvent {
             this.lon = lon;
         }
     }
-    public String serialize(){
-          return new Gson().toJson(this);
+
+    public String serialize() {
+        return new Gson().toJson(this);
     }
 }
 

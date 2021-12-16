@@ -10,7 +10,7 @@ public class WeatherEventBuilder {
     public static WeatherEvent buildEventFromResponse(WeatherResponse.Root response) {
         WeatherEventBuilder weatherEventBuilder = new WeatherEventBuilder();
         return weatherEventBuilder
-                .timeStamp(Instant.now().toString())
+                .timeStamp(Instant.ofEpochMilli(response.dt).toString())
                 .location(response.coord.lat, response.coord.lon)
                 .weather(response.weather.get(0).main)
                 .temperature(response.main.temp)
@@ -47,8 +47,8 @@ public class WeatherEventBuilder {
 
     }
 
-    public WeatherEventBuilder windDirection(int windDierection) {
-        weatherEvent.setWindDirection(windDierection);
+    public WeatherEventBuilder windDirection(int windDirection) {
+        weatherEvent.setWindDirection(windDirection);
         return this;
     }
 

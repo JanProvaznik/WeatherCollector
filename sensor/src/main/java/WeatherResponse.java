@@ -54,7 +54,7 @@ public class WeatherResponse {
         public Wind wind;
         public Rain rain;
         public Clouds clouds;
-        public int dt;
+        public long dt;
         public Sys sys;
         public int timezone;
         public int id;

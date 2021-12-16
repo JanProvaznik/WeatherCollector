@@ -1,42 +1,30 @@
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
+import javax.jms.*;
+
 public class MessageSender {
-    //URL of the JMS server. DEFAULT_BROKER_URL will just mean that JMS server is on localhost
     private static final String url = ActiveMQConnection.DEFAULT_BROKER_URL;
-    // default broker URL is : tcp://localhost:61616"
     private static final String subject = "sensor.Weather"; // Queue Name.You can create any/many queue names as per your requirement.
+    private Connection connection;
+    private Session session;
+    private Destination destination;
+    private MessageProducer producer;
 
-    public static void sendStringDefault(String stringMessage) throws JMSException {
-        // Getting JMS connection from the server and starting it
+    public MessageSender() throws JMSException {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
-        Connection connection = connectionFactory.createConnection();
+        connection = connectionFactory.createConnection();
         connection.start();
-
-        //Creating a non transactional session to send/receive JMS message.
-        Session session = connection.createSession(false,
+        session = connection.createSession(false,
                 Session.AUTO_ACKNOWLEDGE);
 
-        //The queue will be created automatically on the server.
-        Destination destination = session.createTopic(subject);
+        destination = session.createTopic(subject);
+        producer = session.createProducer(destination);
+    }
 
-        // MessageProducer is used for sending messages to the queue.
-        MessageProducer producer = session.createProducer(destination);
-
-        TextMessage message = session
-                .createTextMessage(stringMessage);
-
+    public void sendString(String stringMessage) throws JMSException {
+        TextMessage message = session.createTextMessage(stringMessage);
         producer.send(message);
-
-        connection.close();
     }
 }
 
