@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9ad8f7cc-90b1-41a9-aa74-2118b407efaa" name="Changes" comment="link Python and Java, format, bugfixes, submit candidate" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="c576b2f038779e5df2acae4b9f8fb618e494b053" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="218P61AbscbssuRynNd0vpx1HIz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/testing" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/analytics/src" />
+      <recent name="$PROJECT_DIR$/analytics" />
+      <recent name="$PROJECT_DIR$/datalake-builder/src" />
+    </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="WeatherEventBuilder" />
+      <recent name="WeatherEventHandler" />
+      <recent name="Serializer" />
+      <recent name="Ser" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/analytics/src/main/java" />
+      <recent name="$PROJECT_DIR$/analytics/src/main/python" />
+      <recent name="$PROJECT_DIR$/analytics/src" />
+      <recent name="$PROJECT_DIR$/" />
+      <recent name="$PROJECT_DIR$/datalake-builder/src/main/java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main analytics">
+    <configuration name="Main analytics" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="analytics" />
+      <option name="PROGRAM_PARAMETERS" value="dbdirectory" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main datalake-builder" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="datalake-builder" />
+      <option name="PROGRAM_PARAMETERS" value="testdir" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main sensor" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="sensor" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main analytics" />
+      <item itemvalue="Application.Main datalake-builder" />
+      <item itemvalue="Application.Main sensor" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main sensor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ad8f7cc-90b1-41a9-aa74-2118b407efaa" name="Changes" comment="refactor to use Builder Pattern and single responsibility principle" />
+      <created>1639496933857</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639496933857</updated>
+      <workItem from="1639496935060" duration="1445000" />
+      <workItem from="1639498422891" duration="39903000" />
+      <workItem from="1639989438413" duration="1376000" />
+      <workItem from="1640628821156" duration="7725000" />
+      <workItem from="1640865560611" duration="1769000" />
+      <workItem from="1640991671516" duration="628000" />
+      <workItem from="1641215339882" duration="142000" />
+      <workItem from="1641549176776" duration="2971000" />
+      <workItem from="1641552935108" duration="3595000" />
+      <workItem from="1641559262941" duration="70000" />
+      <workItem from="1641561117107" duration="10005000" />
+      <workItem from="1641898148634" duration="17982000" />
+      <workItem from="1641926943188" duration="883000" />
+    </task>
+    <task id="LOCAL-00001" summary="improve sensor SOLID and fix bugs, implement base functionality of datalake-builder and analytics">
+      <created>1639665654962</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639665654962</updated>
+    </task>
+    <task id="LOCAL-00002" summary="implement Linear regression temperature predictor, improve readability">
+      <created>1641897154293</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641897154293</updated>
+    </task>
+    <task id="LOCAL-00003" summary="link Python and Java, format, bugfixes, submit candidate">
+      <created>1641927099356</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641927099356</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.configurationType" implementationName="Application" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="second practical done" />
+    <MESSAGE value="prettify" />
+    <MESSAGE value="refactor to use Builder Pattern and single responsibility principle" />
+    <MESSAGE value="improve sensor SOLID and implement base functionality of datalake-builder and analytics" />
+    <MESSAGE value="improve sensor SOLID and fix bugs, implement base functionality of datalake-builder and analytics" />
+    <MESSAGE value="implement Linear regression temperature predictor, improve readability" />
+    <MESSAGE value="link Python and Java, format, bugfixes, submit candidate" />
+    <option name="LAST_COMMIT_MESSAGE" value="link Python and Java, format, bugfixes, submit candidate" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/analytics/src/main/java/MessageHandler.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sensor/src/main/java/WeatherRequester.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sensor/src/main/java/WeatherEventBuilder.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sensor/src/main/java/WeatherEventBuilder.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
