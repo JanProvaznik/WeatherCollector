@@ -1,7 +1,4 @@
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
-
-import javax.jms.*;
+import java.io.IOException;
 
 public class Main {
     private static final String TOPIC_NAME = "sensor.Weather";
@@ -14,33 +11,18 @@ public class Main {
 
         LakeMaker lakeMaker = new LakeMaker(args[0]);
         try {
-            Connection connection;
-            Session session;
-            MessageConsumer messageConsumer;
-            ConnectionFactory connectionFactory =
-                    new ActiveMQConnectionFactory(
-                            ActiveMQConnection.DEFAULT_BROKER_URL);
+            MessageReceiver receiver = new MessageReceiver(ID, TOPIC_NAME, SUBSCRIPTION_NAME);
+            receiver.setListener(lakeMaker);
+            receiver.start();
 
-            connection = connectionFactory.createConnection();
-            connection.setClientID(ID);
+            System.out.println("Press enter to stop.");
+            System.in.read();
 
-            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-
-            Topic topic = session.createTopic(TOPIC_NAME);
-
-            messageConsumer = session.createDurableSubscriber(topic, SUBSCRIPTION_NAME);
-            messageConsumer.setMessageListener(lakeMaker);
-            connection.start();
-
-
-            while (true) {
-                Thread.sleep(100);
-            }
-        } catch (JMSException e) {
-            System.out.println(e.getMessage());
-        } catch (InterruptedException e) {
+        } catch (IOException e) {
+            System.out.println("File system error");
             e.printStackTrace();
         }
+
     }
 
     private static boolean validateArgs(String[] args) {

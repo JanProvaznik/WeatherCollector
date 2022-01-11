@@ -1,67 +1,41 @@
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
-
-import javax.jms.*;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.io.File;
+import java.io.IOException;
 
 public class Main {
 
-
+    private static final String ID = "2";
     private static final String TOPIC_NAME = "sensor.Weather";
     private static final String SUBSCRIPTION_NAME = "analytics";
-    private static final String ID = "2";
 
-    static String dbpath = "database";
-    static String dbname = "";
+    private static final String DB_NAME = "database.db";
 
     public static void main(String[] args) {
-        //create db if not exists
-        if (!validateArgs(args))
-            throw new IllegalArgumentException("There must be exactly one parameter: directory for database");
-        dbpath=args[0];
+        if (!argsValid(args))
+            throw new IllegalArgumentException("There must be exactly one parameter: directory path for database");
+        String dbPath = args[0] + "/" + DB_NAME;
+        try {
+            SQLiteWeather db = new SQLiteWeather(dbPath);
+            MessageReceiver receiver = new MessageReceiver(ID, TOPIC_NAME, SUBSCRIPTION_NAME);
+            ChartCreator chartCreator = new ChartCreator();
+            Predictor predictor = new TemperaturePredictor();
+            MessageHandler handler = new MessageHandler(db, chartCreator, predictor);
+            db.createWeatherTable();
+            receiver.setListener(handler);
+            receiver.start();
 
-        String url = "jdbc:sqlite:" + dbpath;
-        try (java.sql.Connection dbConnection = DriverManager.getConnection(url)) {
-            DatabaseManager db = new DatabaseManager(dbConnection);
-            db.createTable();
+            System.out.println("Press enter to end.");
+            System.in.read();
 
-
-            javax.jms.Connection brokerConnection;
-            Session session;
-            MessageConsumer messageConsumer;
-            ConnectionFactory connectionFactory =
-                    new ActiveMQConnectionFactory(
-                            ActiveMQConnection.DEFAULT_BROKER_URL);
-
-            brokerConnection = connectionFactory.createConnection();
-            brokerConnection.setClientID(ID);
-
-            session = brokerConnection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-
-            Topic topic = session.createTopic(TOPIC_NAME);
-
-            messageConsumer = session.createDurableSubscriber(topic, SUBSCRIPTION_NAME);
-            messageConsumer.setMessageListener(db);
-            brokerConnection.start();
-
-
-
-        } catch (SQLException e) {
-            System.out.println("db error");
-            System.out.println(e.getMessage());
-        } catch (JMSException e) {
-            System.out.println("broker error");
-            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        // connect to db
-
-        // connect to topic
 
     }
 
-    private static boolean validateArgs(String[] args) {
+    private static boolean argsValid(String[] args) {
         if (args.length != 1)
+            return false;
+        if (!new File(args[0]).isDirectory())
             return false;
         return true;
     }

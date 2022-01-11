@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -8,7 +9,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,8 +35,7 @@ public class LakeMaker implements MessageListener {
     }
 
     private void createDirectories() {
-        File f = new File(datalakePath + "/" + SENSOR_WEATHER_PATH);
-        f.mkdirs();
+        new File(datalakePath + "/" + SENSOR_WEATHER_PATH).mkdirs();
     }
     private void storeToFile(String message) throws IOException {
         String ts = new Gson().fromJson(message, WeatherEvent.class).getTs();
