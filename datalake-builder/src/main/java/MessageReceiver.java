@@ -3,7 +3,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class MessageReceiver{
+public class MessageReceiver {
     Connection connection;
     Session session;
     MessageConsumer messageConsumer;
@@ -15,16 +15,16 @@ public class MessageReceiver{
 
         try {
             connection = connectionFactory.createConnection();
-        connection.setClientID(id);
+            connection.setClientID(id);
 
-        session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-        Topic topic = session.createTopic(topicName);
-
-        messageConsumer = session.createDurableSubscriber(topic, subscriptionName);
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            Topic topic = session.createTopic(topicName);
+            messageConsumer = session.createDurableSubscriber(topic, subscriptionName);
         } catch (JMSException e) {
             e.printStackTrace();
         }
     }
+
     public void setListener(MessageListener messageListener) {
         try {
             messageConsumer.setMessageListener(messageListener);
@@ -33,6 +33,7 @@ public class MessageReceiver{
         }
 
     }
+
     public void start() {
         try {
             connection.start();

@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MessageHandler implements MessageListener {
-    private SQLiteWeather dbManager;
-    private ChartCreator chartCreator;
-    private Predictor predictor;
+    private final WeatherDatabase dbManager;
+    private final ChartCreator chartCreator;
+    private final Predictor predictor;
 
-    public MessageHandler(SQLiteWeather db, ChartCreator chartCreator, Predictor predictor) {
+    public MessageHandler(WeatherDatabase db, ChartCreator chartCreator, Predictor predictor) {
         this.dbManager = db;
         this.chartCreator = chartCreator;
         this.predictor = predictor;

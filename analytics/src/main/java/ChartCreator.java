@@ -19,16 +19,17 @@ import java.sql.SQLException;
 public class ChartCreator extends JFrame {
 
     static final String CHART_FILE_NAME = "chart.png";
+
     public ChartCreator() {
 
     }
 
 
     private XYDataset createDataset(ResultSet queryResult) throws SQLException {
-        XYSeries temperatureSeries= new XYSeries("temperature");
+        XYSeries temperatureSeries = new XYSeries("temperature");
         XYSeries pressureSeries = new XYSeries("pressure");
         XYSeries humiditySeries = new XYSeries("humidity");
-        while (queryResult.next()){
+        while (queryResult.next()) {
             long ts = queryResult.getLong("ts");
             double temperature = queryResult.getDouble("temperature");
             double pressure = queryResult.getDouble("pressure");
@@ -81,11 +82,12 @@ public class ChartCreator extends JFrame {
 
         return chart;
     }
+
     public void renderChart(ResultSet chartQueryResult) throws SQLException {
         XYDataset dataset = createDataset(chartQueryResult);
         JFreeChart chart = createChart(dataset);
         try {
-            ChartUtils.saveChartAsPNG(new File(CHART_FILE_NAME),chart,500,500);
+            ChartUtils.saveChartAsPNG(new File(CHART_FILE_NAME), chart, 500, 500);
         } catch (IOException e) {
             System.out.println("Failed saving chart.");
             e.printStackTrace();

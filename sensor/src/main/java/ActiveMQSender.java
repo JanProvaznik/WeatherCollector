@@ -8,14 +8,18 @@ public class ActiveMQSender implements StringSender {
     private Destination destination;
     private MessageProducer producer;
 
-    public ActiveMQSender(String brokerUrl, String topicSubject) throws JMSException {
+    public ActiveMQSender(String brokerUrl, String topicSubject) {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(brokerUrl);
-        brokerConnection = connectionFactory.createConnection();
-        brokerConnection.start();
-        brokerSession = brokerConnection.createSession(false,
-                Session.AUTO_ACKNOWLEDGE);
-        destination = brokerSession.createTopic(topicSubject);
-        producer = brokerSession.createProducer(destination);
+        try {
+            brokerConnection = connectionFactory.createConnection();
+            brokerConnection.start();
+            brokerSession = brokerConnection.createSession(false,
+                    Session.AUTO_ACKNOWLEDGE);
+            destination = brokerSession.createTopic(topicSubject);
+            producer = brokerSession.createProducer(destination);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendString(String stringMessage) {

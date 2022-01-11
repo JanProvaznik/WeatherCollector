@@ -3,7 +3,7 @@ import java.time.Instant;
 
 public class SQLiteWeather implements WeatherDatabase {
     private static final String CREATION_SQL = "CREATE TABLE IF NOT EXISTS weather  (ts integer PRIMARY KEY,lat real,lon real,temperature real,pressure real,humidity real);";
-    private static final String INSERTION_SQL = "INSERT INTO weather(ts,lat,lon,temperature,pressure,humidity) VALUES(?,?,?,?,?,?)";
+    private static final String INSERTION_SQL = "INSERT OR IGNORE INTO weather(ts,lat,lon,temperature,pressure,humidity) VALUES(?,?,?,?,?,?)";
     private static final String SELECT_ALL_SQL = "SELECT * FROM weather";
 
     private Connection connection;
@@ -16,14 +16,15 @@ public class SQLiteWeather implements WeatherDatabase {
             e.printStackTrace();
         }
     }
+
     @Override
     public void createWeatherTable() {
-            try {
-                Statement stmt = connection.createStatement();
-                stmt.execute(CREATION_SQL);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.execute(CREATION_SQL);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

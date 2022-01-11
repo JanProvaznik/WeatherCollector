@@ -1,12 +1,18 @@
 # WeatherCollector
-App that queries OpenWeatherMap.org for weather in Barcelona every 15 minutes 
 
-module Sensor produces a WeatherEvent every 15 minutes and sends it to Message broker
+App that queries OpenWeatherMap.org for weather in Barcelona every 15 minutes.
 
-module datalake-builder stores messages received from the broker in filesystem
+module **sensor** produces a WeatherEvent every 15 minutes and sends it to Message broker.
 
-module analytics updates database with the message recieved from the broker,
-then creates a chart and predicts next datapoint
+module **datalake-builder** stores messages received from the broker in filesystem in a directory given as a parameter.
 
-Prerequisite: have ActiveMQ 5.15.12 running on the default port
-Have python in PATH with numpy and sklearn installed
+module **analytics** updates database with the message received from the broker, the directory of the database is given
+as parameter then creates a chart and runs a Python script training a Linear regression model and predicting the weather
+for next 15 minutes, 3 hours and 1 day.
+
+How to run:
+
+1. have ActiveMQ 5.15.12 running on the default port
+2. Have python3 in PATH with numpy, sklearn and pandas installed
+3. Get dependencies with Maven
+4. run each module

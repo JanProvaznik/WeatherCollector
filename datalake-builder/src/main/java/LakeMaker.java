@@ -14,8 +14,8 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class LakeMaker implements MessageListener {
-    private String datalakePath;
     private final String SENSOR_WEATHER_PATH = "datalake/events/sensor.Weather";
+    private String datalakePath;
 
     public LakeMaker(String path) {
         datalakePath = path;
@@ -37,6 +37,7 @@ public class LakeMaker implements MessageListener {
     private void createDirectories() {
         new File(datalakePath + "/" + SENSOR_WEATHER_PATH).mkdirs();
     }
+
     private void storeToFile(String message) throws IOException {
         String ts = new Gson().fromJson(message, WeatherEvent.class).getTs();
         ZonedDateTime dateTime = Instant.parse(ts).atZone(ZoneId.systemDefault());

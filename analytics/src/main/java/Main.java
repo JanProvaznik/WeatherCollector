@@ -23,6 +23,7 @@ public class Main {
             receiver.setListener(handler);
             receiver.start();
 
+            predictor.trainAndPredict(db.selectAll());
             System.out.println("Press enter to end.");
             System.in.read();
 
@@ -35,9 +36,7 @@ public class Main {
     private static boolean argsValid(String[] args) {
         if (args.length != 1)
             return false;
-        if (!new File(args[0]).isDirectory())
-            return false;
-        return true;
+        return new File(args[0]).isDirectory();
     }
 
 }

@@ -79,6 +79,10 @@ public class WeatherEvent {
         this.pressure = pressure;
     }
 
+    public String serialize() {
+        return new Gson().toJson(this);
+    }
+
     public static class Location {
         public double lat;
         public double lon;
@@ -87,10 +91,6 @@ public class WeatherEvent {
             this.lat = lat;
             this.lon = lon;
         }
-    }
-
-    public String serialize() {
-        return new Gson().toJson(this);
     }
 }
 

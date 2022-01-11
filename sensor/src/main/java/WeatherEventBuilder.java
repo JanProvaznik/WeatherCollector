@@ -1,7 +1,7 @@
 import java.time.Instant;
 
 public class WeatherEventBuilder {
-    private final WeatherEvent weatherEvent;
+    private WeatherEvent weatherEvent;
 
     public WeatherEventBuilder() {
         this.weatherEvent = new WeatherEvent();
@@ -10,7 +10,7 @@ public class WeatherEventBuilder {
     public static WeatherEvent buildEventFromResponse(WeatherResponse.Root response) {
         WeatherEventBuilder weatherEventBuilder = new WeatherEventBuilder();
         return weatherEventBuilder
-                .timeStamp(Instant.ofEpochMilli(response.dt).toString())
+                .timeStamp(Instant.ofEpochSecond(response.dt).toString())
                 .location(response.coord.lat, response.coord.lon)
                 .weather(response.weather.get(0).main)
                 .temperature(response.main.temp)

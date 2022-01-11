@@ -1,6 +1,5 @@
 import org.apache.activemq.ActiveMQConnection;
 
-import javax.jms.JMSException;
 import java.io.IOException;
 import java.util.TimerTask;
 
@@ -9,12 +8,12 @@ public class Sensor extends TimerTask {
     private final String LOCATION = "Barcelona";
 
     private final String BROKER_URL = ActiveMQConnection.DEFAULT_BROKER_URL;
-    private final String TOPIC_SUBJECT = "sensor.Weather"; // Queue Name.You can create any/many queue names as per your requirement.
+    private final String TOPIC_SUBJECT = "sensor.Weather";
 
     private StringSender sender;
     private WeatherRequester requester;
 
-    public Sensor() throws JMSException {
+    public Sensor() {
         requester = new WeatherRequester(API_KEY, LOCATION);
         sender = new ActiveMQSender(BROKER_URL, TOPIC_SUBJECT);
     }
