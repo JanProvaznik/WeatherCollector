@@ -22,8 +22,6 @@ public class Main {
             db.createWeatherTable();
             receiver.setListener(handler);
             receiver.start();
-
-            predictor.trainAndPredict(db.selectAll());
             System.out.println("Press enter to end.");
             System.in.read();
 

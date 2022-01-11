@@ -14,5 +14,6 @@ How to run:
 
 1. have ActiveMQ 5.15.12 running on the default port
 2. Have python3 in PATH with numpy, sklearn and pandas installed
-3. Get dependencies with Maven
-4. run each module
+3. Get the project in a runnable state (add all modules in the context menu clicking on all pom.xml files)
+4. Get dependencies with Maven
+5. run each module (sensor last)
