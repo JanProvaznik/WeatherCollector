@@ -10,8 +10,8 @@ public class Sensor extends TimerTask {
     private final String BROKER_URL = ActiveMQConnection.DEFAULT_BROKER_URL;
     private final String TOPIC_SUBJECT = "sensor.Weather";
 
-    private StringSender sender;
-    private WeatherRequester requester;
+    private final StringSender sender;
+    private final WeatherRequester requester;
 
     public Sensor() {
         requester = new WeatherRequester(API_KEY, LOCATION);

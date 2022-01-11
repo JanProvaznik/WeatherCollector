@@ -26,7 +26,6 @@ public class Main {
     }
 
     private static boolean validateArgs(String[] args) {
-        if (args.length != 1) return false;
-        return true;
+        return args.length == 1;
     }
 }

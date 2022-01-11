@@ -5,7 +5,6 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class MessageHandler implements MessageListener {
     private final WeatherDatabase dbManager;
@@ -28,9 +27,9 @@ public class MessageHandler implements MessageListener {
             ResultSet predictData = dbManager.selectAll();
             predictor.trainAndPredict(predictData);
 
-            ResultSet chartData = predictData;
+            ResultSet chartData = dbManager.selectAll();
             chartCreator.renderChart(chartData);
-        } catch (JMSException | SQLException e) {
+        } catch (JMSException e) {
             e.printStackTrace();
         }
     }

@@ -5,7 +5,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class WeatherRequester {
-    private String url;
+    private final String url;
 
     public WeatherRequester(String APIKey, String location) {
         url = new StringBuilder()

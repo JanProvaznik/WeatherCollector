@@ -1,7 +1,7 @@
 import java.time.Instant;
 
 public class WeatherEventBuilder {
-    private WeatherEvent weatherEvent;
+    private final WeatherEvent weatherEvent;
 
     public WeatherEventBuilder() {
         this.weatherEvent = new WeatherEvent();

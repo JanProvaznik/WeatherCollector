@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ad8f7cc-90b1-41a9-aa74-2118b407efaa" name="Changes" comment="add workspace.xml">
+    <list default="true" id="9ad8f7cc-90b1-41a9-aa74-2118b407efaa" name="Changes" comment="fix dependency, predictor does not run before needed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytics/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytics/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/src/main/java/ChartCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/src/main/java/ChartCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/src/main/java/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/src/main/java/MessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/LakeMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/LakeMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/Sensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/WeatherEventBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/WeatherEventBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/WeatherRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/WeatherRequester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,13 +105,13 @@
       <recent name="$PROJECT_DIR$/datalake-builder/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main analytics">
+  <component name="RunManager" selected="Application.Main sensor">
     <configuration name="Main analytics" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="analytics" />
-      <option name="PROGRAM_PARAMETERS" value="/tmp" />
+      <option name="PROGRAM_PARAMETERS" value="dbdirectory" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,7 +163,8 @@
       <workItem from="1641561117107" duration="10005000" />
       <workItem from="1641898148634" duration="17982000" />
       <workItem from="1641926943188" duration="883000" />
-      <workItem from="1641928359075" duration="1236000" />
+      <workItem from="1641928359075" duration="5611000" />
+      <workItem from="1641936050877" duration="2219000" />
     </task>
     <task id="LOCAL-00001" summary="improve sensor SOLID and fix bugs, implement base functionality of datalake-builder and analytics">
       <created>1639665654962</created>
@@ -188,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641928499377</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix dependency, predictor does not run before needed">
+      <created>1641929865093</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641929865093</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,16 +231,12 @@
     <MESSAGE value="implement Linear regression temperature predictor, improve readability" />
     <MESSAGE value="link Python and Java, format, bugfixes, submit candidate" />
     <MESSAGE value="add workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="add workspace.xml" />
+    <MESSAGE value="fix dependency, predictor does not run before needed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix dependency, predictor does not run before needed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/analytics/src/main/java/MessageHandler.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/sensor/src/main/java/WeatherRequester.java</url>
           <line>26</line>
@@ -242,6 +251,16 @@
           <url>file://$PROJECT_DIR$/sensor/src/main/java/WeatherEventBuilder.java</url>
           <line>10</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/analytics/src/main/java/ChartCreator.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/analytics/src/main/java/MessageHandler.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

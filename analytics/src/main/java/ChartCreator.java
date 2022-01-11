@@ -5,7 +5,6 @@ import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
-import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -24,21 +23,24 @@ public class ChartCreator extends JFrame {
 
     }
 
-
-    private XYDataset createDataset(ResultSet queryResult) throws SQLException {
+    private XYSeriesCollection createSeries(ResultSet queryResult) {
         XYSeries temperatureSeries = new XYSeries("temperature");
         XYSeries pressureSeries = new XYSeries("pressure");
         XYSeries humiditySeries = new XYSeries("humidity");
-        while (queryResult.next()) {
-            long ts = queryResult.getLong("ts");
-            double temperature = queryResult.getDouble("temperature");
-            double pressure = queryResult.getDouble("pressure");
-            double humidity = queryResult.getDouble("humidity");
-            temperatureSeries.add(ts, temperature);
-            pressureSeries.add(ts, pressure);
-            humiditySeries.add(ts, humidity);
+        try {
+            while (queryResult.next()) {
+                long ts = queryResult.getLong("ts");
+                double temperature = queryResult.getDouble("temperature");
+                double pressure = queryResult.getDouble("pressure");
+                double humidity = queryResult.getDouble("humidity");
+
+                temperatureSeries.add(ts, temperature);
+                pressureSeries.add(ts, pressure);
+                humiditySeries.add(ts, humidity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        //temperatureSeries.
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(temperatureSeries);
         dataset.addSeries(pressureSeries);
@@ -46,11 +48,11 @@ public class ChartCreator extends JFrame {
         return dataset;
     }
 
-    private JFreeChart createChart(final XYDataset dataset) {
+    private JFreeChart createChart(XYSeriesCollection dataset) {
         JFreeChart chart = ChartFactory.createTimeSeriesChart(
                 "",
                 "Time",
-                "temp/pressure/humidity",
+                "C/hPa/%",
                 dataset,
                 true,
                 true,
@@ -83,8 +85,8 @@ public class ChartCreator extends JFrame {
         return chart;
     }
 
-    public void renderChart(ResultSet chartQueryResult) throws SQLException {
-        XYDataset dataset = createDataset(chartQueryResult);
+    public void renderChart(ResultSet chartQueryResult) {
+        XYSeriesCollection dataset = createSeries(chartQueryResult);
         JFreeChart chart = createChart(dataset);
         try {
             ChartUtils.saveChartAsPNG(new File(CHART_FILE_NAME), chart, 500, 500);

@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 public class LakeMaker implements MessageListener {
     private final String SENSOR_WEATHER_PATH = "datalake/events/sensor.Weather";
-    private String datalakePath;
+    private final String datalakePath;
 
     public LakeMaker(String path) {
         datalakePath = path;
@@ -27,9 +27,7 @@ public class LakeMaker implements MessageListener {
         TextMessage tm = (TextMessage) message;
         try {
             storeToFile(tm.getText());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JMSException e) {
+        } catch (IOException | JMSException e) {
             e.printStackTrace();
         }
     }
